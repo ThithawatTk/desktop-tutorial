@@ -1,0 +1,123 @@
+[project]
+name = "robotframework-robocop"
+description = "Static code analysis tool (linter) and code formatter for Robot Framework"
+keywords = ["robotframework", "automation", "testautomation", "testing", "linter", "qa", "formatting", "formatter"]
+
+[tool.robocop.lint]
+# =============================================================================
+# ignore - ปิด rules ที่ไม่ต้องการตรวจสอบ
+# =============================================================================
+# Spacing Rules (SPC)
+#   SPC01 - trailing-whitespace          : มี whitespace ท้ายบรรทัด
+#   SPC02 - missing-trailing-blank-line  : ไม่มี blank line ท้ายไฟล์
+#   SPC03 - invalid-number-of-empty-lines: จำนวน empty lines ระหว่าง section ผิด
+#   SPC04 - empty-lines-between-test-cases: จำนวน empty lines ระหว่าง test cases ผิด
+#
+# Documentation Rules (DOC)
+#   DOC01 - missing-doc-keyword          : ไม่มี documentation ใน keyword
+#   DOC02 - missing-doc-test-case        : ไม่มี documentation ใน test case
+#   DOC03 - missing-doc-suite            : ไม่มี documentation ใน suite
+#
+# Variable Rules (VAR)
+#   VAR02 - unused-variable              : Variable ประกาศแล้วไม่ได้ใช้
+#   VAR07 - non-local-variables-should-be-uppercase: Variable ไม่ใช่ uppercase
+#
+# Argument Rules (ARG)
+#   ARG01 - unused-argument              : Argument ไม่ได้ใช้งาน
+#
+# Duplicate Rules (DUP)
+#   DUP01 - duplicated-test-case         : Test case ชื่อซ้ำกัน
+#   DUP03 - duplicated-variable          : Variable ซ้ำกัน
+#
+# Length Rules (LEN)
+#   LEN01 - line-too-long                : บรรทัดยาวเกินไป
+#   LEN04 - too-long-test-case           : Test case มี steps มากเกินไป
+#   LEN19 - too-many-arguments           : Keyword มี arguments มากเกินไป
+# =============================================================================
+ignore = [
+    "SPC01", # trailing-whitespace - มี whitespace ท้ายบรรทัด
+    "SPC02", # missing-trailing-blank-line - ไม่มี blank line ท้ายไฟล์
+    "SPC03", # invalid-number-of-empty-lines - จำนวน empty lines ผิด
+    "DOC01", # missing-doc-keyword - ไม่มี documentation ใน keyword
+    "VAR02", # unused-variable - Variable ไม่ได้ใช้งาน
+    "ARG01", # unused-argument - Argument ไม่ได้ใช้งาน
+    "DUP03",  # duplicated-variable - Variable ซ้ำกัน
+    "DOC01",
+    "DOC02",
+    "DOC03",
+    "DOC04" 
+]
+
+# =============================================================================
+# extend-select - เปิด rules เพิ่มเติมที่ต้องการตรวจสอบ
+# =============================================================================
+# Naming Rules (NAME) - ตรวจสอบการตั้งชื่อ
+#   NAME01 - not-allowed-char-in-name    : มีตัวอักษรที่ไม่อนุญาตในชื่อ
+#   NAME02 - wrong-case-in-keyword-name  : Keyword definition ไม่ถูก convention
+#   NAME05 - setting-name-not-in-title-case: Setting name ไม่ใช่ title case
+#   NAME07 - not-capitalized-test-case-title: Test case ไม่ขึ้นต้นด้วยตัวใหญ่
+#   NAME08 - section-variable-not-uppercase: Section variable ไม่ใช่ uppercase
+#   NAME18 - wrong-case-in-keyword-call  : Keyword call ไม่ถูก convention
+#
+# Error Rules (ERR) - ตรวจหา errors
+#   ERR01 - parsing-error                : Syntax error
+#   ERR14 - return-in-test-case          : ใช้ RETURN ใน test case
+#
+# Misc Rules (MISC)
+#   MISC01 - keyword-after-return        : มี keyword หลัง RETURN
+#   MISC02 - empty-return                : RETURN ว่างเปล่า
+# =============================================================================
+extend-select = [
+    "NAME07",  # not-capitalized-test-case-title - Test case ต้องขึ้นต้นด้วยตัวใหญ่
+    "ERR01"    # parsing-error - Syntax error
+]
+
+# =============================================================================
+# configure - ตั้งค่า parameters ของ rules
+# =============================================================================
+# Format: "RULE_ID.parameter=value"
+#
+# Severity options: E = Error, W = Warning, I = Info
+#
+# Convention options (NAME02, NAME18):
+#   each_word_capitalized  : Log To Console (default)
+#   first_word_capitalized : Log to console
+#
+# ตัวอย่าง configure ยอดนิยม:
+# -----------------------------------------------------------------------------
+# Length Rules (LEN) - จำกัดความยาว
+#   LEN01.line_length=120      : ความยาวบรรทัดสูงสุด (default: 120)
+#   LEN04.max_len=20           : Steps สูงสุดใน test case (default: 20)
+#   LEN05.min_calls=1          : Keyword ขั้นต่ำใน test case (default: 1)
+#   LEN06.max_calls=10         : Keyword สูงสุดใน test case (default: 10)
+#   LEN07.max_len=40           : Steps สูงสุดใน keyword (default: 40)
+#   LEN19.max_args=5           : Arguments สูงสุดใน keyword (default: 5)
+#   LEN20.max_returns=4        : Return values สูงสุด (default: 4)
+#   LEN27.max_testcases=50     : Test cases สูงสุดต่อไฟล์ (default: 50)
+#
+# Naming Rules (NAME) - การตั้งชื่อ
+#   NAME02.convention=first_word_capitalized  : Keyword definition convention
+#   NAME18.convention=first_word_capitalized  : Keyword call convention
+#   NAME01.pattern=[\\.\\?]                   : ตัวอักษรที่ไม่อนุญาตในชื่อ
+#
+# Spacing Rules (SPC) - เว้นวรรค
+#   SPC03.empty_lines=2        : Empty lines ระหว่าง sections (default: 2)
+#   SPC04.empty_lines=1        : Empty lines ระหว่าง test cases (default: 1)
+#   SPC05.empty_lines=1        : Empty lines ระหว่าง keywords (default: 1)
+#
+# Misc Rules
+#   MISC03.max_time=5          : Sleep time สูงสุด (วินาที)
+#
+# Severity - ปรับระดับความรุนแรง
+#   RULE_ID.severity=E         : เปลี่ยน severity เป็น Error
+#   RULE_ID.severity=W         : เปลี่ยน severity เป็น Warning
+#   RULE_ID.severity=I         : เปลี่ยน severity เป็น Info
+# =============================================================================
+configure = [
+    # Naming convention
+    "NAME02.convention=first_word_capitalized",  # Keyword definition: Test keywords ✓, Test Keywords ✗
+    "NAME18.convention=first_word_capitalized",  # Keyword call: Log to console ✓, Log To Console ✗
+
+    # Severity adjustments
+    "NAME07.severity=E"         # Test case ไม่ขึ้นต้นตัวใหญ่ = Error
+]

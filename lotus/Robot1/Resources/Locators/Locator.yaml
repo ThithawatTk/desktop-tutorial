@@ -1,0 +1,16 @@
+home_locator:
+  btn_cookie: //button[@id="onetrust-accept-btn-handler"]
+  btn_category: //div[@class="mui-style-1w00pyg"]
+  lbl_category: //li[contains(@id,"category-level1-menu-item")]
+  txt_search: //input[@id="search-bar-input"]
+  img_element: //div[@id="content-root"]
+  btn_eng: //a[@class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways mui-style-1m8egem"]
+
+plp_locator:
+ img_delivery: //img[@class="mui-style-1stx66s"]
+ lbl_product_name: //p[@class="MuiTypography-root MuiTypography-body1 mui-style-1jzbc9c"]
+ img_prodct: //div[@id="product-list"]
+
+pdp_locator:
+ lbl_detail_name: //h1[@class="mui-style-po34pp"]
+

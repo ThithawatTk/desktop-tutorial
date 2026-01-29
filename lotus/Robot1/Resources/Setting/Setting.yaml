@@ -1,0 +1,8 @@
+browser_settings:
+  url: "https://www.lotuss.com/th"
+  browser: "Chrome"
+  timeout: "10s"
+  delay_small: "2s"
+  delay_long: "5s"
+  window_width: 1280
+  window_height: 1024
