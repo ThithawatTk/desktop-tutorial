@@ -1,5 +1,3 @@
-*** Settings ***
-Resource      ../Import.resource
 
 *** Keywords ***
 Accept cookies
