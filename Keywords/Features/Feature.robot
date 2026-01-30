@@ -1,5 +1,3 @@
-*** Settings ***
-Resource      ../Import.resource
 *** Keywords ***
 Open Lotus Website
     SeleniumLibrary.Open browser      ${browser_settings.url}    ${browser_settings.browser}

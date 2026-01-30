@@ -1,6 +1,3 @@
-*** Settings ***
-Resource      ../Import.resource
-
 *** Keywords ***
 Close delivery popup
     SeleniumLibrary.Wait until element is visible  ${plp_locator.img_delivery}   timeout=10s

@@ -1,6 +1,3 @@
-*** Settings ***
-Resource      Import.resource
-
 *** Keywords ***
 Handle optional popup
     [Arguments]    ${locator}    ${timeout}=10s
